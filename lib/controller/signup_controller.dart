@@ -14,7 +14,7 @@ class SignUpController extends ChangeNotifier {
         showTopImg = state;
         notifyListeners();
     }
-    signUp(User user) async {
+    signUp(User user, context) async {
         try {
             var response = await http.post(url, body: {
                 "first_name": user.firstName,
@@ -23,8 +23,10 @@ class SignUpController extends ChangeNotifier {
                 "email": user.email,
                 "password": user.password_,
             });
-            //print(jsonDecode(response.body));
             log(response.body);
+            if(response.statusCode == 200) {
+                Navigator.of(context).pushNamed("/signin");
+            }
         } catch(err) {
             print(err);
         }

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:plantarium/model/plant.dart';
@@ -83,6 +85,7 @@ class GardenState extends State<GardenScreen>{
                       plant.gardenId = garden.gardenId;
                       plantService.save(plant);
                       EasyLoading.dismiss();
+                      _refreshPlants();
                     });
                   });
                 },

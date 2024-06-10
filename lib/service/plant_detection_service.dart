@@ -1,4 +1,4 @@
-import "dart:convert";
+import "dart:developer";
 
 import "package:http/http.dart" as http;
 
@@ -10,6 +10,8 @@ class PlantDetectionService {
       final response = await http.post(url, body: {
        "image" : base64Image
       });
+      log("DETECTION SERVICE");
+      log(response.body);
       return response.body;
     } catch(err) {
       print(err);

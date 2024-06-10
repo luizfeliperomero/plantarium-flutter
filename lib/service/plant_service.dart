@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:plantarium/model/garden.dart';
 import 'package:plantarium/model/plant.dart';
 import "package:http/http.dart" as http;
@@ -10,6 +12,7 @@ class PlantService {
   var url = Uri.http("${api}", "api/v1/plant/save");
 
   void save(Plant plant) async {
+    log("IN PLANT SERVICE");
     try {
       User user = await SQLHelper.getUser();
       await http.post(url, body: {

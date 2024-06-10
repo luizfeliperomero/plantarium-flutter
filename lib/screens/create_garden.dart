@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plantarium/model/garden.dart';
 import 'package:plantarium/service/garden_service.dart';
+import 'package:plantarium/service/route_guard_service.dart';
 
 class CreateGarden extends StatelessWidget {
   TextEditingController _gardenNameController = TextEditingController();
@@ -42,7 +43,7 @@ class CreateGarden extends StatelessWidget {
                   String gardenName = _gardenNameController.text;
                   Garden garden = Garden(gardenName, 1);
                   GardenService().saveGarden(garden);
-                  print('Garden Name: $gardenName');
+                  RouteGuardService.navigate(context);
                 },
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 32.0),

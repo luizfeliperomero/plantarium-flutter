@@ -1,3 +1,5 @@
+import "dart:developer";
+
 import "package:flutter/material.dart";
 import "package:plantarium/controller/signup_controller.dart";
 import "package:plantarium/model/user.dart";
@@ -192,9 +194,9 @@ class SignUpFormStep extends State<SignUpForm> {
     }
 
     Future createUser() async {
-        User user = User(firstNameTEC.text, lastNameTEC.text, emailTEC.text, false, phoneNumberTEC.text, passwordTEC.text);
+        User user = User(firstNameTEC.text, lastNameTEC.text, emailTEC.text, false, phoneNumberTEC.text, passwordTEC.text, "");
         //SQLHelper.createUser(user);
-        SignUpController.instance.signUp(user);
+        SignUpController.instance.signUp(user, context);
         //Navigator.of(context).pushNamed("/signin");
     }
 
